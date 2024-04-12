@@ -29,6 +29,7 @@ warhorse:
     op_tld: 'mydomain.com' # Reasorce Domain
     op_domain_name: 'operation.mydomain.com'
   vm:
+  # C2 Server(s)
     - name: "mythic"
       provider: "digitalocean"
       http_proxy: "none"
@@ -51,6 +52,72 @@ warhorse:
         - name: "aws"
           provider: "aws"
           redirect_url: "https://aws.com"
+    # - name: "teamserver"
+    #   provider: "digitalocean"
+    #   http_proxy: "traefik" # nginx,caddy
+    #   traefik:
+    #     acme_email: noemail@mydomain.com # Lets Encypt Email address
+    #     dashboard: true
+    #     # dir: "/opt/docker/traefik" optional
+    #   firewall:
+    #   golang:
+    #   cobaltstrike:
+    #     # dir: "/opt/docker/cobaltstrike" optional
+    #     dns_over_https: true # Adds DNS records
+    #     auth_header: true
+    #     password: "Password"
+    #     key: "0000-0000-0000-0000"
+    #     socks_ports: 
+    #     - 9201
+    #     - 9202
+    #     - 9203
+    #     cdn:
+    #     - name: "azure_cobalt"
+    #       provider: "azure"
+    #       hostname: "test-002"
+    #       redirect_url: "azure.microsoft.com"
+    #     - name: "aws_cobalt"
+    #       provider: "aws"
+    #       redirect_url: "https://aws.com"
+    #       count: 2
+  # Phishing
+    - name: "phish"
+      provider: "digitalocean"
+      http_proxy: "nginx"
+      gophish:
+        enabled: true
+        site_hostname: "gpredirect" # CHANGE ME
+        admin_hostname: "gpadmin" # CHANGE ME
+        white_list_ip: "0.0.0.0/0"
+      firewall:
+        enabled: true
+      golang:
+        enabled: true
+      evilginx2:
+        enabled: true
+        evilginx_domain: "azureedge.net"
+        redirect_domain: "azure.com"
+        nginx_hostnames:
+          - "evil-test-www"
+          - "evil-test-login"
+        o365:
+          www_hostname: "evil-test-www"
+          login_hostname: "evil-test-login"
+        lures:
+          - name: dontphishme # CHANGE ME
+            path: "/dontphishme" # CHANGE ME
+            phishlet: "o365"
+            redirect_url: www.azure.com
+        phishlets:
+          - "o365"
+          - "outlook"
+        cdn:
+        - name: "www"
+          provider: "azure"
+          hostname: "evil-test-www" # CHANGEME
+        - name: "login"
+          provider: "azure"
+          hostname: "evil-test-login" # CHANGEME
   terraform:
     state_bucket_enabled: true
     state_bucket_name: "tfstate-bucket"
