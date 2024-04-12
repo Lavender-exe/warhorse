@@ -1,15 +1,15 @@
 ---
-- include: folders.yml
-- include: ssh.yml
-- include: inventory.yml
-- include: generate.yml
-- include: deployment.yml
-- include: nginx.yml
+- ansible.builtin.include_tasks: folders.yml
+- ansible.builtin.include_tasks: ssh.yml
+- ansible.builtin.include_tasks: inventory.yml
+- ansible.builtin.include_tasks: generate.yml
+- ansible.builtin.include_tasks: deployment.yml
+- ansible.builtin.include_tasks: nginx.yml
   with_items: "{{ warhorse.vm }}"
   when: item.nginx.config_file is not defined and item.http_proxy == "nginx"
-- include: evilginx2.yml
+- ansible.builtin.include_tasks: evilginx2.yml
   with_items: "{{ warhorse.vm }}"
   when: item.evilginx2 is defined
-- include: cobaltstrike.yml
+- ansible.builtin.include_tasks: cobaltstrike.yml
   with_items: "{{ warhorse.vm }}"
   when: item.cobaltstrike is defined

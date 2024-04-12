@@ -19,6 +19,7 @@ roles:
   - name: warhorse.evilginx2_docker
   - name: warhorse.nginx_docker
   - name: warhorse.parrotos_docker
+  - name: warhorse.swag_docker
 
 collections:
   # Install a collection from Ansible Galaxy.

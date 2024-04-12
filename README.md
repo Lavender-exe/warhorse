@@ -42,26 +42,26 @@ Warhorse consists of a fully-featured Ansible playbook to deploy infrastructure 
 
 ## Supported Cloud Providers / Service
 
-| Logo                                                                                                                                                               | Provider      | Services    |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ------------- |
-|                             | Digital Ocean | Droplet,DNS |
-|                                                                | Azure         | CDN         |
-|  | AWS           | CDN,EC2,DNS |
-|                                                                      | Linode        | COMPUTE,DNS |
+| Logo | Provider      | Services    |
+|------|---------------|-------------|
+|      | Digital Ocean | Droplet,DNS |
+|      | Azure         | CDN         |
+|      | AWS           | CDN,EC2,DNS |
+|      | Linode        | COMPUTE,DNS |
 
 ## Modules
 
-| Logo                                                                                                                                                                                                                                                                                                                     | Service      | Role                                                                                |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | ------------------------------------------------------------------------------------- |
-|                                                                                                                                                                                               | Cobaltstrike | [cobaltstrike_docker](https://github.com/warhorse/ansible-role-cobaltstrike-docker) |
-|                                                                                                                                                                                               | Traefik      | [traefik_docker](https://github.com/warhorse/ansible-role-traefik-docker)           |
-|                                                                                                                                                                                                   | Neo4j        | [neo4j_docker](https://github.com/warhorse/ansible-role-nginx-docker)               |
-|                                                                                                                                                                                                   | Nginx        | [nginx_docker](https://github.com/warhorse/ansible-role-nginx-docker)               |
-|                                                                                                                                                                                           | Evilginx2    | [evilginx2_docker](https://github.com/warhorse/ansible-role-evilginx2-docker)       |
-|                                                                                                                                                                                           | Nighthawk    | [nighthawk_docker](https://github.com/warhorse/ansible-role-nighthawk-docker)       |
-|                                                                                                                                                                                                                                   | Tailscale    | [tailscale](https://github.com/artis3n/ansible-role-tailscale)                      |
-|  | Mythic       | [mythic](https://github.com/t94j0/ansible-role-mythic)                              |
-|                                                                                                                                                                                               | Gophish      | [gophish_docker](https://github.com/warhorse/ansible-role-gophish-docker)           |
+| Logo | Service      | Role                                                                                |
+|------|--------------|-------------------------------------------------------------------------------------|
+|      | Cobaltstrike | [cobaltstrike_docker](https://github.com/warhorse/ansible-role-cobaltstrike-docker) |
+|      | Traefik      | [traefik_docker](https://github.com/warhorse/ansible-role-traefik-docker)           |
+|      | Neo4j        | [neo4j_docker](https://github.com/warhorse/ansible-role-nginx-docker)               |
+|      | Nginx        | [nginx_docker](https://github.com/warhorse/ansible-role-nginx-docker)               |
+|      | Evilginx2    | [evilginx2_docker](https://github.com/warhorse/ansible-role-evilginx2-docker)       |
+|      | Nighthawk    | [nighthawk_docker](https://github.com/warhorse/ansible-role-nighthawk-docker)       |
+|      | Tailscale    | [tailscale](https://github.com/artis3n/ansible-role-tailscale)                      |
+|      | Mythic       | [mythic](https://github.com/t94j0/ansible-role-mythic)                              |
+|      | Gophish      | [gophish_docker](https://github.com/warhorse/ansible-role-gophish-docker)           |
 
 ## Documentation
 

@@ -1,2 +1,2 @@
 ---
-- include: email.yml
+- ansible.builtin.include_tasks: email.yml

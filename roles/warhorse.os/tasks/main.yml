@@ -1,10 +1,10 @@
 ---
-- include: roles.yml
-- include: upgrade.yml
-- include: locale.yml
-- include: zsh.yml
-- include: motd.yml
-- include: packages.yml
-- include: network.yml
-- include: docker.yml
-- include: sudo.yml
+- ansible.builtin.include_tasks: roles.yml
+- ansible.builtin.include_tasks: upgrade.yml
+- ansible.builtin.include_tasks: locale.yml
+- ansible.builtin.include_tasks: zsh.yml
+- ansible.builtin.include_tasks: motd.yml
+- ansible.builtin.include_tasks: packages.yml
+- ansible.builtin.include_tasks: network.yml
+- ansible.builtin.include_tasks: docker.yml
+- ansible.builtin.include_tasks: sudo.yml

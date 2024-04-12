@@ -17,13 +17,13 @@
     src: templates/terraform_provider.tf.j2
     dest: "{{ terraform_project_path }}/provider.tf"
 
-- include: azure.yml
+- ansible.builtin.include_tasks: azure.yml
   when: warhorse | regex_search("(?i).+('provider':\s'azure')", multiline=True, ignorecase=True)
-- include: digitalocean.yml
+- ansible.builtin.include_tasks: digitalocean.yml
   when: warhorse | regex_search("(?i).+('provider':\s'digitalocean')", multiline=True, ignorecase=True)
-- include: linode.yml
+- ansible.builtin.include_tasks: linode.yml
   when: warhorse | regex_search("(?i).+('provider':\s'linode')", multiline=True, ignorecase=True)
-- include: aws.yml
+- ansible.builtin.include_tasks: aws.yml
   when: warhorse | regex_search("(?i).+('provider':\s'aws')", multiline=True, ignorecase=True)
 
 - name: Generating Terraform Outputs

@@ -1,4 +1,4 @@
 ---
-- include: folders.yml
-- include: generate.yml
-- include: role.yml
+- ansible.builtin.include_tasks: folders.yml
+- ansible.builtin.include_tasks: generate.yml
+- ansible.builtin.include_tasks: role.yml
