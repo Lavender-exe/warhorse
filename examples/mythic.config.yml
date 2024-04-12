@@ -12,12 +12,12 @@ warhorse:
     backup_bucket_endpoint: "https://nyc3.digitaloceanspaces.com"
     backup_bucket_access_key: "access_key"
     backup_bucket_secret_key: "secret_key"
-  vpn:
+  vpn: # Optional
     tailscale:
       tailnet_name: 'tailnet.github'
       tailscale_auth_key: "tskey-auth-0000000"
       enable_hostnames: true
-  notification:
+  notification: # Optional
     email:
       host: "smtp.sendgrid.net"
       from: "noreply@mydomain.com"
@@ -27,44 +27,41 @@ warhorse:
   dns:
     provider: "digitalocean"
     op_tld: 'mydomain.com' # Reasorce Domain
+    op_domain_name: 'operation.mydomain.com'
   vm:
     - name: "teamserver"
       provider: "digitalocean"
-      http_proxy: "traefik" # nginx,caddy
-      traefik:
-        acme_email: noemail@mydomain.com # Lets Encypt Email address
-        dashboard: true
-        # dir: "/opt/docker/traefik" optional
+      http_proxy: "none"
       firewall:
+        enabled: true
       golang:
-      cobaltstrike:
-        # dir: "/opt/docker/cobaltstrike" optional
-        dns_over_https: true # Adds DNS records
-        auth_header: true
-        password: "Password"
-        key: "0000-0000-0000-0000"
-        socks_ports: 
-        - 9201
-        - 9202
-        - 9203
-        cdn:
-        - name: "azure_cobalt"
+        enabled: true
+      mythic:
+        enabled: true
+        username: 'admin'
+        password: "nrwgkgh23rje31trfg" # CHANGEME
+        operation: "default"
+        auth_header_name: "cdnauth" # CHANGEME
+        auth_header_value: "{{ 'gdshe2r23' | b64encode }}" # CHANGEME
+        cdn: # Redirector
+        - name: "azure1"
           provider: "azure"
-          hostname: "test-002"
-          redirect_url: "azure.microsoft.com"
-        - name: "aws_cobalt"
+          hostname: "azcdn1" # CHANGE ME
+          redirect_url: "https://azure.microsoft.com"
+        - name: "aws"
           provider: "aws"
           redirect_url: "https://aws.com"
-          count: 2
+
   terraform:
     state_bucket_enabled: true
     state_bucket_name: "tfstate-bucket"
     state_bucket_region: "us-east-1"
     state_bucket_endpoint: "https://nyc3.digitaloceanspaces.com"
-    bucket_access_key: "access_key"
+    bucket_access_key: "access_key" # {{ lookup('community.general.bitwarden_secrets_manager'), 'bucket_access_key' }}
     bucket_secret_key: "secret_key"
     digitalocean_token: "token"
     aws_profile: "profile_name"
+
   users:
     - username: ralph
       name: Ralph
@@ -72,3 +69,9 @@ warhorse:
       - "{{ lookup('file', '/Users/ralph/.ssh/id_rsa.pub') }}"
       shell: '/usr/bin/zsh'
       email: ralph@mydomain.com
+    # - username: Extra
+    #   name: Extra
+    #   authorized_keys:
+    #   - "{{ lookup('file', '/Users/Extra/.ssh/id_rsa.pub') }}"
+    #   shell: '/usr/bin/zsh'
+    #   email: Extra@mydomain.com
